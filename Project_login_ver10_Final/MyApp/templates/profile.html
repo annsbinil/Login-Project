@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Profile Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <style>
+            #profileHeading{
+                display: flex;
+                align-items: left;
+                color: white;
+                background-color: #333333;
+                font-family: sans-serif;
+                padding: 10px;
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #d09392;
+                }
+
+            li{
+                float: right;
+            }
+
+            li a {
+                display: block;
+                font-family: sans-serif;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                text-decoration: none;
+            }
+
+            li a:hover {
+                background-color: #04AA6D;
+            }
+
+            .active {
+                background-color: palevioletred;
+            }
+
+            li {
+                border-left: 3px solid #bbb;
+            }
+
+            #profileContent{
+                background-color: rgb(245, 233, 218);
+                text-align: center;
+                font-family: sans-serif;
+                padding: 5px;
+                margin-top: 10px;
+                border-radius: 30px;
+                width: 20%;
+                margin-left: 80px;
+            }
+
+            .search{
+                float: right;
+                margin-right: 80px;
+                margin-bottom: 20px;
+                background-color: rgb(245, 233, 218);
+                border-radius: 10px;
+                padding: 10px;
+            }
+
+            table{
+                width: 90%;
+                margin-top: 10px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            table, th, td{
+                border: 3px solid white;
+                border-collapse: collapse;
+                
+            }
+
+            th, td{
+                text-align: center;
+                background-color: #d09392;
+                font-family: sans-serif;
+                padding: 10px;
+            }
+
+            td{
+                background-color: #f4d6d6
+            }
+
+            td:hover{
+                background-color: #d09392
+            }
+
+            .content{
+                font-family: sans-serif;
+                margin-left: 80px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="profileHeading">
+            <h1>PROFILE</h1>
+        </div>
+        
+        <div id="NavBar">
+            <ul>
+                <li><a href="{% url 'logout' %}" class="active">Logout</a></li>
+            </ul>
+        </div>
+        
+        <div id="profileContent">
+            <h2>Hello {{ user.username }}!</h2>
+            <p>Email: {{ user.email }}</p>
+        </div>
+        
+        <h2 class="content">Job Listing</h2>
+        <p class="content">Employment Listing</p>
+
+        <div class="search">
+        <form action="" method="get">
+            <input type="search" name="job" placeholder="🔍Search">
+            <button type="submit" style="border-radius: 10px; background-color: black; color: white;">Search</button>
+        </form>
+        </div>
+
+        <table>
+            <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Closing Date</th>
+            </tr>
+
+            {% for i in job %}
+                <tr>
+                    <td>{{i.job}}</td>
+                    <td>{{i.company_name}}</td>
+                    <td>{{i.closing_date}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+
+        <script src="" async defer></script>
+    </body>
+</html>
